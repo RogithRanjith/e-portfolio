@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rogith Ranjth</title>
+  <meta name="description" content="Portfolio de Rogith Ranjith Frank Richardson">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f1117;
+      --bg2: #181c27;
+      --bg3: #1e2235;
+      --text: #f0f2f8;
+      --muted: #8b90a8;
+      --border: #2a2f45;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --green: #10b981;
+      --tag-bg: #1e1b4b;
+      --tag-color: #a78bfa;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .nav-name { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    section { padding: 5rem 2.5rem; max-width: 800px; margin: 0 auto; }
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ── HERO ── */
+    #hero {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 1.2rem;
+      border: 1px solid #312e81;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    #hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+      color: var(--text);
+    }
+    #hero h1 span { color: var(--accent2); }
+    #hero p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: var(--bg2);
+      transition: border-color 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--accent2); }
+
+    /* Photo */
+    .photo-wrap { flex-shrink: 0; position: relative; }
+    .photo-frame {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 3px;
+    }
+    .photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--accent2);
+      overflow: hidden;
+    }
+    /* Pour utiliser ta photo : remplace le contenu de .photo-inner par <img src="photo.jpg" alt="Photo de Prénom Nom"> */
+    .photo-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .online-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: var(--green);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+    }
+
+    /* ── COMPÉTENCES ── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.8rem;
+      color: var(--text);
+    }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+    .skill-tag:hover { border-color: var(--accent2); }
+
+    /* ── PROJETS ── */
+    .projects-grid { display: grid; gap: 1rem; }
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      background: var(--bg2);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .project-title { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .project-link {
+      font-size: 0.78rem;
+      color: var(--accent2);
+      text-decoration: none;
+      border: 1px solid #312e81;
+      border-radius: 6px;
+      padding: 3px 10px;
+      background: var(--tag-bg);
+      transition: background 0.15s;
+    }
+    .project-link:hover { background: #2e2a6e; }
+    .project-desc { font-size: 0.875rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ptag {
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      font-size: 0.73rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+    .ptag.green { background: #052e16; color: #6ee7b7; }
+    .ptag.gray { background: var(--bg3); color: var(--muted); }
+
+    /* ── À PROPOS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .stat-num { font-size: 1.7rem; font-weight: 700; color: var(--accent2); }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .about-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+    }
+    .about-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── CONTACT ── */
+    .contact-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--bg2);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .contact-link:hover { border-color: var(--accent2); background: var(--bg3); }
+    .contact-link svg { width: 17px; height: 17px; stroke: var(--accent2); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── HAMBURGER ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── TABLETTE (641px – 900px) ── */
+    @media (max-width: 900px) {
+      section { padding: 4rem 2rem; max-width: 100%; }
+      #hero { gap: 2rem; padding-top: 5rem; padding-bottom: 4rem; }
+      #hero h1 { font-size: 2rem; }
+      .photo-frame { width: 140px; height: 140px; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+      .contact-row { gap: 8px; }
+    }
+
+    /* ── MOBILE (≤ 640px) ── */
+    @media (max-width: 640px) {
+      nav {
+        padding: 1rem 1.2rem;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        border-top: 1px solid var(--border);
+        margin-top: 0.8rem;
+        padding-top: 0.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.65rem 0;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+
+      section { padding: 3rem 1.2rem; }
+
+      #hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.8rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .hero-text { order: 2; }
+      .photo-wrap { order: 1; }
+      .hero-badge { font-size: 0.75rem; }
+      #hero h1 { font-size: 1.9rem; }
+      #hero p { max-width: 100%; font-size: 0.9rem; }
+      .hero-btns { justify-content: center; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 12px 20px; }
+      .photo-frame { width: 120px; height: 120px; }
+      .photo-inner { font-size: 2.2rem; }
+      .online-badge { width: 15px; height: 15px; bottom: 6px; right: 6px; }
+
+      h2 { font-size: 1.35rem; margin-bottom: 1.2rem; }
+
+      .skills-grid { gap: 6px; }
+      .skill-tag { font-size: 0.78rem; padding: 6px 12px; }
+
+      .project-card { padding: 1.2rem; }
+      .project-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .project-title { font-size: 0.9rem; }
+
+      .stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .stat-card { padding: 0.9rem 0.5rem; }
+      .stat-num { font-size: 1.4rem; }
+      .stat-label { font-size: 0.72rem; }
+
+      .about-card { padding: 1.2rem; }
+
+      .contact-row { flex-direction: column; gap: 8px; }
+      .contact-link { width: 100%; justify-content: center; padding: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .status-dot { animation: none; }
+      .project-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Rogith Ranjith Frank Richardson</span>
+  <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#hero">Accueil</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-badge">
+      <span class="status-dot"></span>
+      Recherche — Master 
+    </div>
+    <h1>Bonjour, je suis<br><span>Rogith Ranjith Frank Richardson</span></h1>
+    <p>Recherche de master en informatique passionné par l'UI/UX Design et la conception d'application.</p>
+    <div class="hero-btns">
+      <a href="#projets" class="btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+  </div>
+  <div class="photo-wrap">
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <img src="IMG_01.jpg" alt="Photo de Rogith Ranjith">
+        <!-- Remplace "PN" par : <img src="photo.jpg" alt="Photo de Prénom Nom"> -->
+      </div>
+    </div>
+    <div class="online-badge"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <p class="section-label">Stack technique</p>
+  <h2>Compétences</h2>
+  <div class="skills-grid">
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">Java</span>
+    <span class="skill-tag">C++</span>
+    <span class="skill-tag">SQL</span>
+    <span class="skill-tag">HTML / CSS</span>
+    <span class="skill-tag">Git &amp; GitHub</span>
+    <span class="skill-tag">REST API</span>
+    <span class="skill-tag">Linux</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJETS -->
+<section id="projets">
+  <p class="section-label">Réalisations</p>
+  <h2>Projets</h2>
+  <div class="projects-grid">
+<!-- 
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Analyseur de code statique</span>
+        <!-- Remplace href="#" par ton vrai lien GitHub 
+        <a href="#" class="project-link" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <p class="project-desc">Outil CLI en Python qui analyse des fichiers source et détecte des problèmes de qualité : complexité cyclomatique, fonctions trop longues, variables inutilisées. Génère un rapport HTML automatiquement.</p>
+      <div class="project-tags">
+        <span class="ptag">Python</span>
+        <span class="ptag">AST</span>
+        <span class="ptag">pytest</span>
+        <span class="ptag gray">CLI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Scanner de vulnérabilités web</span>
+        <a href="#" class="project-link" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <p class="project-desc">Outil d'audit automatique basé sur l'OWASP Top 10. Détecte les en-têtes HTTP manquants, les failles XSS réfléchies, les injections SQL et génère un rapport de criticité (Low / Medium / High).</p>
+      <div class="project-tags">
+        <span class="ptag">Python</span>
+        <span class="ptag green">Cybersécurité</span>
+        <span class="ptag green">OWASP</span>
+        <span class="ptag gray">CLI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Task Manager Full-Stack</span>
+        <a href="#" class="project-link" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <p class="project-desc">Application web complète de gestion de tâches avec authentification JWT, API REST et base de données SQL. Frontend JavaScript, backend Flask, déploiement sur Render.</p>
+      <div class="project-tags">
+        <span class="ptag">Python</span>
+        <span class="ptag">Flask</span>
+        <span class="ptag">JavaScript</span>
+        <span class="ptag">SQL</span>
+        <span class="ptag gray">REST API</span>
+      </div>
+    </div>
+  -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Momentum</span>
+        <a href="https://provocative-get-momentum-now.base44.app" class="project-link" target="_blank" rel="noopener">Momentum →</a>
+      </div>
+      <p class="project-desc">Habit Tracker App. Maquette d'application fonctionnelle pour commencer et suivre des habitudes quotidiennes. </p>
+      <div class="project-tags">
+        <span class="ptag">React</span>
+        <span class="ptag">JavaScript</span>
+        <span class="ptag">CSS</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- À PROPOS -->
+<section id="about">
+  <p class="section-label">Qui suis-je ?</p>
+  <h2>À propos</h2>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Projets GitHub</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Langages maîtrisés</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">Bac+3</div>
+      <div class="stat-label">Niveau actuel</div>
+    </div>
+  </div>
+  <div class="about-card">
+    <!-- Personnalise ce texte avec ta propre présentation -->
+    <p>Étudiant en licence informatique, je me passionne pour le développement logiciel, la qualité du code et la sécurité applicative. Je candidate en master UI/UX Design pour approfondir ces domaines et contribuer à des projets ambitieux. En dehors du code, j'aime la photographie, le sport et surtout voyager.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Me retrouver</p>
+  <h2>Contact</h2>
+  <div class="contact-row">
+    <!-- Remplace les href par tes vraies coordonnées -->
+    <a href="mailto:rogith.ranjith_fr@gmx.fr" class="contact-link">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      rogith.ranjith_fr@gmx.fr
+    </a>
+    <a href="https://github.com/RogithRanjith" class="contact-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      github.com/RogithRanjith
+    </a>
+    <a href="https://www.linkedin.com/in/rogith-ranjith-frank-richardson-8a1617368/" class="contact-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  Rogith Ranjith Frank Richardson &middot; All rights &middot; 2026
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
+</body>
+</html>
